@@ -9,6 +9,11 @@ const MenuItem = ({ name, price, description, tags }) => (
       <span className="item-price">${price}</span>{" "}
     </div>
     <p className="item-desc">{description}</p>{" "}
+    <p>asdsadad</p>
+    <p>hbkjabsd</p>
+    <p>fgbhsgsfdg</p>
+    <p>srfgfdgs</p>
+    <p>sgfgdgs</p>
     {tags && (
       <div className="tag-container">
         {" "}
