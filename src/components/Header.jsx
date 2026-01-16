@@ -2,7 +2,11 @@ import React from 'react'
 
 // 1. Mako
 const Header = ({ name, tagline }) => (
-  <h1>Header</h1>
+ <header className="header">
+    <h1 className="title">{name}</h1>
+    <div className="divider"></div>
+    <p className="tagline">{tagline}</p>
+  </header>
 );
 
 export default Header
