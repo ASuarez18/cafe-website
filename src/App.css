@@ -9,9 +9,38 @@
 }
 
 /* Header Section */
-.header {
-  text-align: center;
+/* Replace your existing Header Section CSS with this */
+.header.elegant {
   margin-bottom: 50px;
+  padding: 10px; /* Space for the border */
+}
+
+.header.elegant .border-frame {
+  border: 4px double #4a3728; /* The classic double border */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.header.elegant .title {
+  font-family: "Playfair Display", Georgia, serif; /* Serif font is key here */
+  font-size: 3rem;
+  color: #4a3728;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.header.elegant .divider-icon {
+  color: #d4a373;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.header.elegant .tagline {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a3728;
 }
 
 .title {
