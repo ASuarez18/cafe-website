@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css'; // Don't forget to import your CSS!
+import Header from './components/Header';
+import MenuCategory from './components/MenuCategory';
+import MenuItem from './components/MenuItem';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [filter, setFilter] = useState('All');
+
+  const menuData = [
+    { 
+      category: "Coffee", 
+      items: [
+        { name: "Flat White", price: "4.50", description: "Velvety steamed milk over double espresso.", tags: ["Hot"] },
+        { name: "Cold Brew", price: "5.00", description: "12-hour steep for a smooth kick.", tags: ["Cold"] }
+      ]
+    },
+    { 
+      category: "Eats", 
+      items: [
+        { name: "Avocado Toast", price: "12.00", description: "Sourdough, chili flakes, and radish.", tags: ["Vegan"] },
+        { name: "Almond Croissant", price: "4.50", description: "Twice-baked with house-made frangipane.", tags: ["Sweet"] }
+      ]
+    }
+  ];
+
+  const filteredMenu = filter === 'All' 
+    ? menuData 
+    : menuData.filter(cat => cat.category === filter);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="menu-container">
+      <Header name="BEANS & BREAD" tagline="ESTABLISHED 2024" />
+      
+      <nav className="nav-filters">
+        {['All', 'Coffee', 'Eats'].map(cat => (
+          <button 
+            key={cat} 
+            onClick={() => setFilter(cat)}
+            className={`filter-btn ${filter === cat ? 'active' : ''}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </nav>
 
-export default App
+      <main>
+        {filteredMenu.map((cat, index) => (
+          <MenuCategory key={index} category={cat.category} items={cat.items} />
+        ))}
+      </main>
+    </div>
+  );
+}
